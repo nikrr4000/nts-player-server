@@ -25,3 +25,5 @@ export const config = {
     level: envVars.LOG_LEVEL,
   },
 };
+
+export * from "./defaultSites"

@@ -1,16 +1,13 @@
 import { container } from 'tsyringe';
 
-// Репозитории
-import { UserRepository } from '@domain/repositories/UserRepository';
-import { InMemoryUserRepository } from '@infrastructure/repositories/InMemoryUserRepository';
+import { SiteRepository } from '@domain/repositories/SiteRepository';
+import { InMemorySiteRepository } from '@infrastructure/repositories/InMemorySiteRepository';
 
-// Сервисы и use-cases
-import { UserService } from '@application/services/UserService';
-import { CreateUserUseCase } from '@application/use-cases/CreateUserUseCase';
+import { SiteService } from '@application/services/SiteService';
+import { CreateSiteUseCase } from '@application/use-cases/CreateSiteUseCase';
 
-// Регистрация зависимостей
-container.registerSingleton<UserRepository>('UserRepository', InMemoryUserRepository);
-container.registerSingleton(UserService);
-container.registerSingleton(CreateUserUseCase);
+container.registerSingleton<SiteRepository>('SiteRepository', InMemorySiteRepository);
+container.registerSingleton(SiteService);
+container.registerSingleton(CreateSiteUseCase);
 
 export { container };

@@ -1,8 +1,11 @@
 import app from '@interfaces/http/app';
 import { config } from '@infrastructure/config';
 import logger from '@infrastructure/logging/logger';
+import { bootstrap } from '@infrastructure/bootstrap';
 
 const PORT = config.server.port;
+
+bootstrap()
 
 const server = app.listen(PORT, () => {
   logger.info(`Server running in ${config.env} mode on port ${PORT}`);

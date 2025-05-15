@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import userRouter from './userRoutes';
+import siteRoutes from './siteRoutes';
 
 const router = Router();
 
-router.use('/users', userRouter);
+router.use('/sites', siteRoutes);
 
 // Маршрут здоровья приложения
 router.get('/health', (req, res) => {
