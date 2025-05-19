@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import siteRoutes from './siteRoutes';
+import { container } from '@shared/container';
+import { ScrapperRepository } from '@domain/interfaces';
 
 const router = Router();
 
@@ -13,5 +15,11 @@ router.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+router.get('/repo', async (req, res) => {
+  const siteScrapperRepository = container.resolve<ScrapperRepository>("SiteScrapperRepository"); 
+  const data = await siteScrapperRepository.getSiteDataByName('nts')
+  res.send(data)
+})
 
 export default router;

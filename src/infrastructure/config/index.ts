@@ -26,4 +26,4 @@ export const config = {
   },
 };
 
-export * from "./defaultSites"
+export * from "./defaultSitesData"

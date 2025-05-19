@@ -1,5 +1,5 @@
-import { Site } from '@domain/entities/Site';
-import { SiteRepository } from '@domain/repositories/SiteRepository';
+import { Site } from '@domain/models/site/Site';
+import { SiteRepository } from '@domain/interfaces/site/SiteRepository';
 
 export class InMemorySiteRepository implements SiteRepository {
   private sites: Map<string, Site> = new Map();

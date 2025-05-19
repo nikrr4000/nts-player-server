@@ -34,13 +34,12 @@ try {
   };
 }
 
-// Определяем временные валидаторы, если настоящие не существуют
 let siteValidators;
 try {
-  const validators = require('./userValidation');
+  const validators = require('./siteValidation');
   siteValidators = {
     createSiteValidator: validators.createSiteValidator,
-    getSiteValidator: validators.getSiteValidator
+    getSiteByNameValidator: validators.getSiteValidator
   };
 } catch (error) {
   console.warn('Валидаторы не найдены. Используются заглушки.');
@@ -50,8 +49,7 @@ try {
   };
 }
 
-// Маршруты
-siteRouter.post('/', /* siteValidators.createSiteValidator, */ (req, res, next) => {
+siteRouter.post('/', siteValidators.createSiteValidator, (req, res, next) => {
   try {
     siteController.create(req, res, next);
   } catch (error) {
@@ -59,7 +57,7 @@ siteRouter.post('/', /* siteValidators.createSiteValidator, */ (req, res, next) 
   }
 });
 
-siteRouter.get('/:name', /* siteValidators.getSiteValidator,*/ (req, res, next) => {
+siteRouter.get('/:name',  siteValidators.getSiteByNameValidator, (req, res, next) => {
   try {
     siteController.getByName(req, res, next);
   } catch (error) {
@@ -67,7 +65,6 @@ siteRouter.get('/:name', /* siteValidators.getSiteValidator,*/ (req, res, next) 
   }
 });
 
-// Дополнительные маршруты
 siteRouter.get('/', (req, res) => {
   res.status(200).json({
     status: 'success',

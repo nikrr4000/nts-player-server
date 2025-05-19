@@ -1,8 +1,7 @@
-import { Site, SiteFactory, SiteValidator } from '@domain/entities/Site';
-import { SiteRepository } from '@domain/repositories/SiteRepository';
+import { Site, SiteFactory } from '@domain/models/site/Site';
+import { SiteRepository } from '@domain/interfaces/site/SiteRepository';
 import { BadRequestError } from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
-import z from 'zod';
 
 @injectable()
 export class SiteService {
@@ -29,3 +28,5 @@ export class SiteService {
     return this.siteRepository.findByName(name);
   }
 }
+
+

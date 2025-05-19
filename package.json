@@ -21,7 +21,9 @@
     "pino-http": "^10.4.0",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.10.0",
-    "zod": "^3.24.4"
+    "zod": "^3.24.4",
+    "puppeteer": "^24.8.2",
+    "puppeteer-stream": "^3.0.20"
   },
   "devDependencies": {
     "@types/cors": "^2.8.18",

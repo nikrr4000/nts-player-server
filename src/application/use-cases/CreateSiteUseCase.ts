@@ -1,4 +1,4 @@
-import { Site } from '@domain/entities/Site';
+import { Site } from '@domain/models/site/Site';
 import { SiteService } from '@application/services/SiteService';
 import { injectable, inject } from 'tsyringe';
 

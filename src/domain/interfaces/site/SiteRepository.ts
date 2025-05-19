@@ -1,4 +1,4 @@
-import { Site } from '@domain/entities/Site';
+import { Site } from '@domain/models/site/Site';
 
 export interface SiteRepository {
   create(user: Site): Promise<Site>;
