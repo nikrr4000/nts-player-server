@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "outDir": "./dist",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "paths": {
+      "@shared/*": ["../shared/*"],
+      "@types/*": ["../shared/types/*"],
+      "@utils/*": ["../shared/utils/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services/*": ["./src/services/*"],
+      "@assets/*": ["./src/assets/*"]
+    }
+  },
+  "include": ["src/**/*", "vite.config.ts"],
+  "references": [{ "path": "../shared" }]
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "@shared/*": ["../shared/*"],
+      "@types/*": ["../shared/types/*"],
+      "@utils/*": ["../shared/utils/*"],
+      "@application/*": ["./src/application/*"],
+      "@domain/*": ["./src/domain/*"],
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@server-shared/*": ["./src/shared/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [{ "path": "../shared" }]
+}
