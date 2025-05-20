@@ -7,13 +7,13 @@
     "rootDir": "./src",
     "paths": {
       "@shared/*": ["../shared/*"],
-      "@types/*": ["../shared/types/*"],
+      "@types/*": ["../shared/src/types/*"],
       "@utils/*": ["../shared/utils/*"],
       "@application/*": ["./src/application/*"],
       "@domain/*": ["./src/domain/*"],
       "@infrastructure/*": ["./src/infrastructure/*"],
       "@interfaces/*": ["./src/interfaces/*"],
-      "@server-shared/*": ["./src/shared/*"]
+      "@server-shared/*": ["./src/shared/src/*"]
     }
   },
   "include": ["src/**/*"],

@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { apiClient } from '../../shared/src/api/api-client'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  useEffect(()=> {
+    apiClient.getSiteScenarios().then(data => console.log(data))
+  })
+  
   return (
     <>
       <div>

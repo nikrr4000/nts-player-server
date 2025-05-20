@@ -1,12 +1,6 @@
-import { z } from 'zod';
+import { SiteValidator, Site } from '@server-shared/types';
 
-export const SiteValidator = z.object({
-  id: z.string().uuid().optional(),
-  name: z.string(),
-  url: z.string()
-});
-
-export type Site = z.infer<typeof SiteValidator>;
+export {SiteValidator, Site}
 
 export class SiteFactory {
   static create(data: Omit<Site, 'id'>): Site {    

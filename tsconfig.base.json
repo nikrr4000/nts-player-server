@@ -9,9 +9,9 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["./shared/*"],
-      "@types/*": ["./shared/types/*"],
-      "@utils/*": ["./shared/utils/*"]
+      "@shared/*": ["./shared/src/*"],
+      "@types/*": ["./shared/src/types/*"],
+      "@utils/*": ["./shared/src/utils/*"]
     }
   },
   "exclude": ["node_modules", "dist", "build"]
