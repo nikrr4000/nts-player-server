@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { Site } from "../site/Site";
-import { SiteScrapingDataObj } from "./SiteScrapperData";
+import { SiteScrapingDataObj, SiteScrapingScenraio } from "./SiteScrapperData";
 import {
   BrowserActions,
   BrowserActionsParams,
@@ -11,7 +11,7 @@ import { ScrapperStreamsAdapter } from "src/server/src/domain/interfaces/site-sc
 export type ScrapingSiteEntity = Site & SiteScrapingDataObj;
 
 export interface SiteScrapper {
-  getScenario: (name: string) => void;
+  getScenario: (name: string) => SiteScrapingScenraio | undefined;
   performScenario: (name: string) => void;
   performAction: (
     action: BrowserActions,
@@ -34,7 +34,8 @@ export class ParticularSiteScrapper<B, P> implements SiteScrapper {
   }
 
   getScenario(name: string) {
-    return this.scrapingEntity.scenarios.get(name);
+    const scenario = this.scrapingEntity.scenarios.find((s) => s[name]);
+    return scenario ? scenario[name] : undefined;
   }
 
   async performScenario(name: string) {
@@ -45,10 +46,12 @@ export class ParticularSiteScrapper<B, P> implements SiteScrapper {
       );
     }
 
-    for (const { action, ...args } of scenario.actions) {
+    for (const act of scenario.actions) {
+      const { action, ...args } = act;
       await this.performAction(action, args);
     }
   }
+
   async performAction(action: BrowserActions, args: BrowserActionsParams) {
     const actionFn = this.scrapper.actions[action];
     if (!actionFn) {
@@ -56,6 +59,7 @@ export class ParticularSiteScrapper<B, P> implements SiteScrapper {
     }
     await actionFn(args);
   }
+
   async getStream<T, O>(options: O) {
     return this.streamsAdapter.getStream<T, O>(
       this.scrapper.currentPage,
